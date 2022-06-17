@@ -1,0 +1,8 @@
+﻿@inherits RazorLight.TemplatePage<ELifeRPG.CodeGenerator.Templates.ClassDataTypeBody>
+@{
+    DisableEncoding = true;
+}
+@foreach (var property in Model.Type.Properties)
+{
+    @($"    {property.Value} {property.Key};{Model.NewLine}")
+}
