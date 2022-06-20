@@ -1,0 +1,1 @@
+﻿dotnet run -- --output ./out

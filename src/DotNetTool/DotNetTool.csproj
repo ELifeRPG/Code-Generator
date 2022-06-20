@@ -1,26 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>net6.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <RootNamespace>ELifeRPG.CodeGenerator.DotNetTool</RootNamespace>
-        <PackageId>DotNetTool</PackageId>
-    </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ELifeRPG.CodeGenerator.DotNetTool</RootNamespace>
+    <AssemblyName>ELifeRPG.CodeGenerator.DotNetTool</AssemblyName>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>enfusion-generator</ToolCommandName>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <PreserveCompilationContext>true</PreserveCompilationContext>
-    </PropertyGroup>
+  <PropertyGroup>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\CodeGenerator\CodeGenerator.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodeGenerator\CodeGenerator.csproj"/>
+  </ItemGroup>
 
-    <ItemGroup>
-      <None Update="swagger.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
+  <ItemGroup>
+    <None Update="swagger.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1"/>
+  </ItemGroup>
 
 </Project>
