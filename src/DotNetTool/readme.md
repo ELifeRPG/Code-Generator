@@ -1,1 +1,1 @@
-﻿dotnet run -- --output ./out
+﻿dotnet run -- http://localhost:5064/swagger/v1/swagger.json --output ./out
