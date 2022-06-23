@@ -24,7 +24,7 @@ jobs:
           export VERSION=$(git describe --long --tags --match 'v*' | sed 's/v//' | sed -E 's/[-].+//g');
           dotnet nuget add source --username ${GITHUB_REPOSITORY_OWNER} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json";          
           dotnet pack src/DotNetTool/DotNetTool.csproj --configuration Release -p:Version=$VERSION --output ./out;
-          dotnet nuget push ./out/*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json;
+          dotnet nuget push ./out/*.nupkg -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json;
       - name: Upload output artifacts
         uses: actions/upload-artifact@v2
         with:
