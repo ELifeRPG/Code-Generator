@@ -18,13 +18,12 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.SkipAutoProps=true
+        run: dotnet test --no-build --verbosity normal
       - name: Publish
         run: >
-          export VERSION=$(git describe --long --tags --match 'v*' | sed 's/v//' | sed -E 's/[-].+//g');
-          dotnet nuget add source --username ${GITHUB_REPOSITORY_OWNER} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json";          
-          dotnet pack src/DotNetTool/DotNetTool.csproj --configuration Release -p:Version=$VERSION --output ./out;
-          dotnet nuget push ./out/*.nupkg -s https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json;
+          export VERSION=$(git describe --long --tags --match 'v*' | sed 's/v//' | sed -E 's/[-].+//g');        
+          dotnet pack src/DotNetTool/DotNetTool.csproj --configuration Release --output ./out -p:Version=$VERSION;
+          dotnet nuget push ./out/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key "${{ secrets.GITHUB_TOKEN }}";
       - name: Upload output artifacts
         uses: actions/upload-artifact@v2
         with:
