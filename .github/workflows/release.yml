@@ -23,7 +23,7 @@ jobs:
         run: >
           export VERSION=$(git describe --abbrev=0 --tags --match "v*" | cut -c 2-);        
           dotnet pack src/DotNetTool/DotNetTool.csproj --configuration Release --output ./out -p:Version=$VERSION;
-          dotnet nuget push ./out/*.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key "${{ secrets.GITHUB_TOKEN }}";
+          dotnet nuget push ./out/*.$VERSION.nupkg --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key "${{ secrets.GITHUB_TOKEN }}";
       - name: Upload output artifacts
         uses: actions/upload-artifact@v2
         with:
