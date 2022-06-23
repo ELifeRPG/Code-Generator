@@ -9,20 +9,23 @@
     <AssemblyName>ELifeRPG.CodeGenerator.DotNetTool</AssemblyName>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>enfusion-generator</ToolCommandName>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <PreserveCompilationContext>true</PreserveCompilationContext>
+  <PropertyGroup Condition="'$(CI)' == 'true'">
+    <Authors>ELifeRPG</Authors>
+    <Description>Tool which creates Enfusion structs/classes</Description>
+    <PackageProjectUrl>$(GITHUB_SERVER_URL)/$(GITHUB_REPOSITORY)</PackageProjectUrl>
+    <RepositoryUrl>$(GITHUB_SERVER_URL)/$(GITHUB_REPOSITORY)</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CodeGenerator\CodeGenerator.csproj"/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="swagger.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
