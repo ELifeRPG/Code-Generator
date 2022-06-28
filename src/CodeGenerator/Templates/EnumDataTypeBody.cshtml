@@ -4,5 +4,5 @@
 }
 @foreach (var property in Model.Type.Values)
 {
-    @($"    {property.Key} = {property.Value};{Model.NewLine}")
+    @($"    {property.Key} = {property.Value},{Model.NewLine}")
 }
