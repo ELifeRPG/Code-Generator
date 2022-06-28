@@ -27,7 +27,6 @@ public class GenerateCommand : Command
     {
         var inputArgumentValue = context.ParseResult.GetValueForArgument(_inputArgument);
         var outputOptionValue = context.ParseResult.GetValueForOption(_outputOption) ?? Path.Join(Directory.GetCurrentDirectory(), "out");
-        Console.WriteLine($"inputArgumentValue: {inputArgumentValue} -- outputOptionValue: {outputOptionValue}");
 
         var reader = new OpenApiDocumentReader();
         var document = Uri.TryCreate(inputArgumentValue, UriKind.Absolute, out var inputUri)

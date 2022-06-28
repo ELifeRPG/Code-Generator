@@ -8,7 +8,7 @@
     <RootNamespace>ELifeRPG.CodeGenerator.DotNetTool</RootNamespace>
     <AssemblyName>ELifeRPG.CodeGenerator.DotNetTool</AssemblyName>
     <PackAsTool>true</PackAsTool>
-    <ToolCommandName>enfusion-generator</ToolCommandName>
+    <ToolCommandName>enfusion codegen</ToolCommandName>
     <PreserveCompilationContext>true</PreserveCompilationContext>
   </PropertyGroup>
 
