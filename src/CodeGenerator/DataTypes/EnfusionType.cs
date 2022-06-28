@@ -55,6 +55,6 @@ public class EnfusionType
 
     private string GetIntegerTypeName()
     {
-        return _schema.Enum is { Count: 0 } ? "integer" : "enum";
+        return _schema.Enum is { Count: 0 } ? "int" : "enum";
     }
 }

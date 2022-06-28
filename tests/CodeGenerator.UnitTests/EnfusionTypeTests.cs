@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using ELifeRPG.CodeGenerator;
 using ELifeRPG.CodeGenerator.DataTypes;
 using Xunit;
 
@@ -9,6 +8,16 @@ namespace UnitTests;
 
 public class EnfusionTypeTests
 {
+    [Fact]
+    public void DataTypeName_ReturnsInt_WhenOfTypeInteger()
+    {
+        var schema = new OpenApiSchema { Type = "integer" };
+        
+        var enfusionType = new EnfusionType(schema);
+        
+        Assert.Equal("int", enfusionType.Name);
+    }
+
     [Fact]
     public void DataTypeName_ReturnsEnum_WhenOfTypeIntegerWithEnums()
     {
@@ -18,7 +27,7 @@ public class EnfusionTypeTests
         
         Assert.Equal("enum", enfusionType.Name);
     }
-    
+
     [Fact]
     public void DataTypeName_ReturnsClass_WhenOfTypeObject()
     {
