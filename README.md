@@ -7,22 +7,9 @@ Tool which takes an OpenAPI json and creates Enfusion structs/classes out of it.
 
 The package is available from GitHub Packages. There is one major downside of using GH Packages: depsite being a public package, you need to authenticate against the registry (you can read more of this quirks [here](https://github.community/t/download-from-github-package-registry-without-authentication/14407)).
 
-To consume the packages from our GitHub registry, simple add a new source `dotnet nuget add source --username "PublicToken" --password "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" --store-password-in-clear-text --name ELifeRPG "https://nuget.pkg.github.com/ELifeRPG/index.json"`.
-Alternatively, you can also change your `nuget.config` and merge it with the following content:
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-    <packageSources>
-        <add key="ELifeRPG" value="https://nuget.pkg.github.com/ELifeRPG/index.json" />
-    </packageSources>
-    <packageSourceCredentials>
-        <ELifeRPG>
-            <add key="Username" value="PublicToken" />
-            <add key="ClearTextPassword" value="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" />
-        </ELifeRPG>
-    </packageSourceCredentials>
-</configuration>
-```
+To consume the packages from our GitHub registry, simple add a new source specifying your credentials `dotnet nuget add source --username "YOURUSER" --password "YOURPASSWORD" --name ELifeRPG "https://nuget.pkg.github.com/ELifeRPG/index.json"`.
+Alternatively, you can [use a personal-access-token](https://github.com/settings/tokens/new) (scope: `read:packages`) using `PublicToken` as `username` parameter and the token as `password` parameter. Kind notice: do not commit the PAT as it will be [revoked immediately](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/token-expiration-and-revocation#token-revoked-when-pushed-to-a-public-repository-or-public-gist).
+
 
 ### Install the dotnet tool
 
@@ -31,12 +18,12 @@ If you want to specify a prerelease or want to use a specific version, please he
 
 ## Usage
 
-To get an overview of the tool, visit the builtin documentation by executing `dotnet `
+To get an overview of the tool, visit the inbuilt documentation by executing `enfusion-codegen --help`.
 
 ### Examples
 
 #### Generate classes out of a file
-`enfusion codegen generate ./openapi.json --output ./out`
+`enfusion-codegen generate ./openapi.json --output ./out`
 
 #### Generate classes from a remote file
-`enfusion codegen generate http://localhost/openapi.json --output ./out`
+`enfusion-codegen generate http://localhost/openapi.json --output ./out`
