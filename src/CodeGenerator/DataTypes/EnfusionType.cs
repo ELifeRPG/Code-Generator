@@ -11,11 +11,14 @@ public class EnfusionType
         _schema = schema;
         Name = GetName();
         BaseName = GetBaseName();
+        DefaultValue = GetDefaultValue();
     }
 
     public string Name { get; }
     
     public string? BaseName { get; }
+    
+    public string? DefaultValue { get; }
 
     private string GetName()
     {
@@ -47,10 +50,15 @@ public class EnfusionType
         
         return _schema.Type != "object" ? _schema.Type : "JsonApiStruct";
     }
+    
+    private string? GetDefaultValue()
+    {
+        return _schema.Type != "array" ? null : "{}";
+    }
 
     private string GetArrayTypeName()
     {
-        return $"array<{_schema.Items.Reference.Id}>";
+        return $"ref array<ref {_schema.Items.Reference.Id}>";
     }
 
     private string GetIntegerTypeName()

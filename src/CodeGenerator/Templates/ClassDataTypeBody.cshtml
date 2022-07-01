@@ -4,5 +4,13 @@
 }
 @foreach (var property in Model.Type.Properties)
 {
-    @($"    {property.Value} {property.Key};{Model.NewLine}")
+    @($"    {property.Value.Name} {property.Key}{(property.Value.DefaultValue == null ? string.Empty : $" = {property.Value.DefaultValue}")};{Model.NewLine}")
 }
+
+    void @(Model.Type.TypeName)()
+    {
+@foreach (var property in Model.Type.Properties)
+{
+    @($"        RegV(\"{property.Key}\");{Model.NewLine}")
+}
+    }

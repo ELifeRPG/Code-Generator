@@ -45,7 +45,7 @@ public class EnfusionTypeTests
         
         var enfusionType = new EnfusionType(schema);
         
-        Assert.Equal("array<somedto>", enfusionType.Name);
+        Assert.Equal("ref array<ref somedto>", enfusionType.Name);
     }
     
     [Fact]

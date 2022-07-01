@@ -13,10 +13,10 @@ public class EnfusionClassDataType : EnfusionDataType
             .Select(x =>
             {
                 var mappedType = new EnfusionType(x.Value);
-                return new KeyValuePair<string, string>(x.Key, mappedType.Name);
+                return new KeyValuePair<string, EnfusionType>(x.Key, mappedType);
             })
             .ToList();
     }
     
-    public List<KeyValuePair<string, string>> Properties { get; }
+    public List<KeyValuePair<string, EnfusionType>> Properties { get; }
 }
