@@ -87,4 +87,26 @@ public class EnfusionTypeTests
         
         Assert.Null(enfusionType.BaseName);
     }
+    
+    [Theory]
+    [InlineData("string")]
+    [InlineData("integer")]
+    public void DefaultValue_ReturnsNull_WhenOpenApiTypeIsSimpleType(string openApiType)
+    {
+        var schema = new OpenApiSchema { Type = openApiType };
+        
+        var enfusionType = new EnfusionType(schema);
+        
+        Assert.Null(enfusionType.DefaultValue);
+    }
+    
+    [Fact]
+    public void DefaultValue_ReturnsValue_WhenOfTypeArray()
+    {
+        var schema = new OpenApiSchema { Type = "array", Items = new OpenApiSchema { Reference = new OpenApiReference { Id = "somedto" } } };
+        
+        var enfusionType = new EnfusionType(schema);
+        
+        Assert.Equal("{}", enfusionType.DefaultValue);
+    }
 }
