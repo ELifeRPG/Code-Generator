@@ -27,6 +27,7 @@ public class EnfusionType
             return _schema.Type switch
             {
                 "integer" => GetIntegerTypeName(),
+                "number" => "float",
                 "object" => "class",
                 "array" => GetArrayTypeName(),
                 _ => _schema.Type
