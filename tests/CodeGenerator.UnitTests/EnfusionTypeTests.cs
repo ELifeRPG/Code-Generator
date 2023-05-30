@@ -9,6 +9,16 @@ namespace UnitTests;
 public class EnfusionTypeTests
 {
     [Fact]
+    public void DataTypeName_ReturnsFloat_WhenOfTypeNumber()
+    {
+        var schema = new OpenApiSchema { Type = "number" };
+        
+        var enfusionType = new EnfusionType(schema);
+        
+        Assert.Equal("float", enfusionType.Name);
+    }
+    
+    [Fact]
     public void DataTypeName_ReturnsInt_WhenOfTypeInteger()
     {
         var schema = new OpenApiSchema { Type = "integer" };
