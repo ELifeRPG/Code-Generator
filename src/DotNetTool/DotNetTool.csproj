@@ -10,6 +10,7 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>enfusion-codegen</ToolCommandName>
     <PreserveCompilationContext>true</PreserveCompilationContext>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(CI)' == 'true'">

@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>ELifeRPG.CodeGenerator</RootNamespace>
     <AssemblyName>ELifeRPG.CodeGenerator</AssemblyName>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
